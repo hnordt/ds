@@ -127,6 +127,10 @@ Plan
     color-scheme: light;
   }
 
+  /* Dark theme tokens - duplicated in both selectors below for proper theme switching:
+     1. [data-theme="dark"] for explicit dark mode
+     2. @media (prefers-color-scheme: dark) for system preference (only when no explicit theme is set)
+     Note: This duplication is intentional in plain CSS to support both approaches */
   [data-theme="dark"] {
     --ds-color-neutral-0: oklch(19% 0.01 255);
     --ds-color-neutral-50: oklch(21% 0.012 255);
