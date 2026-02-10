@@ -1,0 +1,108 @@
+TASK
+Create a reusable CSS design system.
+
+DELIVERABLE
+- Return ONLY the CSS for one file: ds.css
+- Output ONE markdown code block labeled css.
+- No HTML, no JavaScript, and no text outside the code block.
+- Plain CSS only (no SCSS). Standard CSS nesting is allowed.
+
+BROWSER TARGET
+- Main target: Chrome 145+
+- Safari support: optional (nice to have, not required)
+
+NAMING (BEM)
+- Follow BEM naming: https://getbem.com/naming/
+- Prefix every block with ds- to avoid name clashes.
+  Examples:
+  - .ds-button
+  - .ds-button__icon
+  - .ds-button--primary
+
+FILE ORGANIZATION (single file)
+- Use cascade layers in this order:
+  @layer reset, tokens, base, components, utilities;
+- Add clear section comments for each layer so the file is easy to scan.
+
+DESIGN TOKENS
+Define tokens using CSS custom properties:
+- colors (use oklch() and color-mix())
+- typography (use clamp() where it makes sense)
+- spacing scale
+- radius + border widths
+- shadows
+- z-index
+- motion (durations + easing)
+Themes:
+- Light theme by default
+- Dark theme via [data-theme="dark"] AND also @media (prefers-color-scheme: dark)
+Also:
+- Use @property for at least one custom property that a component animates.
+
+ACCESSIBILITY + UX
+- Use :focus-visible for focus rings
+- Support prefers-reduced-motion
+- Support prefers-contrast: more and forced-colors: active
+- Keep selector specificity low (prefer :where())
+- Prefer logical properties (padding-inline, margin-block, inset-inline, etc.)
+- Avoid !important unless it is truly needed.
+
+MODERN CSS FEATURES (MUST USE)
+Use each of these at least once in real component code:
+- @layer
+- standard CSS nesting
+- container queries (container-type + @container)
+- :has()
+- @scope (wrap in @supports if needed)
+- Popover API: [popover] and :popover-open
+- CSS Anchor Positioning: anchor-name, position-anchor, anchor()
+
+COMPONENTS (BEM BLOCKS)
+Implement at least these blocks, with sensible elements/modifiers/states:
+
+1) .ds-button
+   - modifiers: --primary, --secondary, --danger, --ghost
+   - size modifiers: --sm, --md, --lg
+   - element: __icon
+   - states: :hover, :active, :disabled, [aria-disabled="true"]
+
+2) .ds-field (wrapper for form controls)
+   - elements: __label, __control, __help, __error
+
+3) .ds-input and .ds-textarea
+   - focus / disabled / invalid states
+
+4) .ds-select (native <select>)
+   - custom arrow, focus/disabled states
+
+5) .ds-checkbox, .ds-radio, .ds-switch
+   - use accent-color
+   - use :has() to style the label when checked/focused
+
+6) .ds-badge
+
+7) .ds-alert
+   - modifiers: --info, --success, --warn, --danger
+
+8) .ds-card
+
+9) .ds-tooltip and .ds-popover
+   - built with Popover API + Anchor Positioning
+   - placement modifiers (examples): --top, --bottom, --start, --end
+
+10) .ds-menu
+   - popover menu styling with strong focus styles
+
+TOP-OF-FILE NOTE
+At the very top of the CSS file, add a short comment section called "Plan" that lists:
+- the @layer order
+- the components included
+
+ACCEPTANCE CHECKLIST (must be true)
+- One CSS file only, no imports.
+- All component classes follow BEM + ds- prefix.
+- Each “Modern CSS feature” listed above is used at least once.
+- The result looks consistent across components (same tokens, same spacing, same focus ring).
+
+DEFAULTS
+If something is missing, pick clean defaults and keep everything consistent.
