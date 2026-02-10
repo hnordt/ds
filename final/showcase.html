@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System Showcase</title>
+  <link rel="stylesheet" href="ds.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .showcase-header {
+      background: var(--ds-color-surface-elevated);
+      border-block-end: var(--ds-border-1) solid var(--ds-color-border);
+      padding-block: var(--ds-space-6);
+      padding-inline: var(--ds-space-5);
+    }
+    
+    .showcase-title {
+      font-size: var(--ds-font-size-3);
+      font-weight: var(--ds-font-weight-semibold);
+      line-height: var(--ds-line-height-tight);
+      margin-block-end: var(--ds-space-2);
+    }
+    
+    .showcase-description {
+      color: var(--ds-color-text-muted);
+      max-inline-size: 60ch;
+    }
+    
+    .showcase-nav {
+      background: var(--ds-color-surface);
+      border-block-end: var(--ds-border-1) solid var(--ds-color-border);
+      padding-block: var(--ds-space-4);
+      padding-inline: var(--ds-space-5);
+      position: sticky;
+      inset-block-start: 0;
+      z-index: var(--ds-z-dropdown);
+    }
+    
+    .showcase-nav-title {
+      font-size: var(--ds-font-size-1);
+      font-weight: var(--ds-font-weight-medium);
+      margin-block-end: var(--ds-space-2);
+    }
+    
+    .showcase-nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ds-space-3);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .showcase-nav-link {
+      color: var(--ds-color-primary);
+      font-size: var(--ds-font-size-1);
+      text-decoration: none;
+    }
+    
+    .showcase-nav-link:hover {
+      text-decoration: underline;
+    }
+    
+    .showcase-main {
+      padding-block: var(--ds-space-6);
+      padding-inline: var(--ds-space-5);
+    }
+    
+    .showcase-section {
+      margin-block-end: var(--ds-space-8);
+    }
+    
+    .showcase-section-title {
+      font-size: var(--ds-font-size-3);
+      font-weight: var(--ds-font-weight-semibold);
+      line-height: var(--ds-line-height-tight);
+      margin-block-end: var(--ds-space-2);
+      padding-block-end: var(--ds-space-2);
+      border-block-end: var(--ds-border-2) solid var(--ds-color-border);
+    }
+    
+    .showcase-section-description {
+      color: var(--ds-color-text-muted);
+      margin-block-end: var(--ds-space-5);
+    }
+    
+    .showcase-subsection {
+      margin-block-end: var(--ds-space-6);
+    }
+    
+    .showcase-subsection-title {
+      font-size: var(--ds-font-size-2);
+      font-weight: var(--ds-font-weight-medium);
+      margin-block-end: var(--ds-space-3);
+    }
+    
+    .showcase-grid {
+      display: grid;
+      gap: var(--ds-space-4);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .showcase-example {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ds-space-2);
+      padding: var(--ds-space-4);
+      border: var(--ds-border-1) solid var(--ds-color-border);
+      border-radius: var(--ds-radius-md);
+      background: var(--ds-color-surface);
+    }
+    
+    .showcase-example-label {
+      font-size: var(--ds-font-size-0);
+      font-weight: var(--ds-font-weight-medium);
+      color: var(--ds-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .showcase-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ds-space-3);
+    }
+    
+    .showcase-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ds-space-3);
+      align-items: center;
+    }
+    
+    .theme-toggle {
+      position: fixed;
+      inset-block-end: var(--ds-space-4);
+      inset-inline-end: var(--ds-space-4);
+      z-index: var(--ds-z-popover);
+    }
+  </style>
+</head>
+<body class="ds-root">
+  <header class="showcase-header">
+    <h1 class="showcase-title">Design System Showcase</h1>
+    <p class="showcase-description">
+      A comprehensive demonstration of all components, variants, and states in the unified design system.
+      Optimized for modern Chromium browsers with full accessibility support.
+    </p>
+  </header>
+
+  <nav class="showcase-nav">
+    <h2 class="showcase-nav-title">Components</h2>
+    <ul class="showcase-nav-list">
+      <li><a href="#buttons" class="showcase-nav-link">Buttons</a></li>
+      <li><a href="#forms" class="showcase-nav-link">Forms</a></li>
+      <li><a href="#inputs" class="showcase-nav-link">Inputs</a></li>
+      <li><a href="#checkboxes" class="showcase-nav-link">Checkboxes & Radios</a></li>
+      <li><a href="#switches" class="showcase-nav-link">Switches</a></li>
+      <li><a href="#badges" class="showcase-nav-link">Badges</a></li>
+      <li><a href="#alerts" class="showcase-nav-link">Alerts</a></li>
+      <li><a href="#cards" class="showcase-nav-link">Cards</a></li>
+      <li><a href="#popovers" class="showcase-nav-link">Popovers</a></li>
+      <li><a href="#utilities" class="showcase-nav-link">Utilities</a></li>
+    </ul>
+  </nav>
+
+  <main class="showcase-main">
+    <!-- Buttons Section -->
+    <section id="buttons" class="showcase-section">
+      <h2 class="showcase-section-title">Buttons</h2>
+      <p class="showcase-section-description">
+        Interactive button components with multiple variants, sizes, and states.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Variants</h3>
+        <div class="showcase-grid">
+          <div class="showcase-example">
+            <span class="showcase-example-label">Default</span>
+            <button class="ds-button">Button</button>
+          </div>
+          <div class="showcase-example">
+            <span class="showcase-example-label">Primary</span>
+            <button class="ds-button ds-button--primary">Primary</button>
+          </div>
+          <div class="showcase-example">
+            <span class="showcase-example-label">Secondary</span>
+            <button class="ds-button ds-button--secondary">Secondary</button>
+          </div>
+          <div class="showcase-example">
+            <span class="showcase-example-label">Danger</span>
+            <button class="ds-button ds-button--danger">Danger</button>
+          </div>
+          <div class="showcase-example">
+            <span class="showcase-example-label">Ghost</span>
+            <button class="ds-button ds-button--ghost">Ghost</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Sizes</h3>
+        <div class="showcase-inline">
+          <button class="ds-button ds-button--primary ds-button--sm">Small</button>
+          <button class="ds-button ds-button--primary ds-button--md">Medium</button>
+          <button class="ds-button ds-button--primary ds-button--lg">Large</button>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">With Icons</h3>
+        <div class="showcase-inline">
+          <button class="ds-button ds-button--primary">
+            <span class="ds-button__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </span>
+            Add Item
+          </button>
+          <button class="ds-button ds-button--secondary">
+            <span class="ds-button__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </span>
+            Go Back
+          </button>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">States</h3>
+        <div class="showcase-inline">
+          <button class="ds-button ds-button--primary">Default</button>
+          <button class="ds-button ds-button--primary" disabled>Disabled</button>
+          <button class="ds-button ds-button--primary" aria-disabled="true">Aria Disabled</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section id="forms" class="showcase-section">
+      <h2 class="showcase-section-title">Form Fields</h2>
+      <p class="showcase-section-description">
+        Complete form field pattern with label, control, help text, and error messaging.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Basic Field</h3>
+        <div class="ds-field">
+          <label class="ds-field__label" for="demo-input-1">Email Address</label>
+          <div class="ds-field__control">
+            <input type="email" id="demo-input-1" class="ds-input" placeholder="you@example.com">
+          </div>
+          <span class="ds-field__help">We'll never share your email with anyone else.</span>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Invalid Field</h3>
+        <div class="ds-field">
+          <label class="ds-field__label" for="demo-input-invalid">Username</label>
+          <div class="ds-field__control">
+            <input type="text" id="demo-input-invalid" class="ds-input" value="ab" required minlength="3">
+          </div>
+          <span class="ds-field__help">Choose a unique username (minimum 3 characters).</span>
+          <span class="ds-field__error">Username must be at least 3 characters long.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inputs Section -->
+    <section id="inputs" class="showcase-section">
+      <h2 class="showcase-section-title">Text Inputs</h2>
+      <p class="showcase-section-description">
+        Text input controls including standard inputs, textareas, and select dropdowns.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Input States</h3>
+        <div class="showcase-stack">
+          <input type="text" class="ds-input" placeholder="Default input">
+          <input type="text" class="ds-input" value="Filled input">
+          <input type="text" class="ds-input" placeholder="Disabled input" disabled>
+          <input type="text" class="ds-input" placeholder="Invalid input" required pattern="[0-9]+">
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Textarea</h3>
+        <textarea class="ds-textarea" placeholder="Enter your message here..."></textarea>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Select</h3>
+        <div class="showcase-stack">
+          <select class="ds-select">
+            <option>Choose an option</option>
+            <option>Option One</option>
+            <option>Option Two</option>
+            <option>Option Three</option>
+          </select>
+          <select class="ds-select" disabled>
+            <option>Disabled select</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkboxes & Radios Section -->
+    <section id="checkboxes" class="showcase-section">
+      <h2 class="showcase-section-title">Checkboxes & Radio Buttons</h2>
+      <p class="showcase-section-description">
+        Native checkboxes and radio buttons with enhanced styling and :has() label highlighting.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Checkboxes</h3>
+        <fieldset style="border: none; padding: 0; margin: 0;">
+          <legend style="font-weight: var(--ds-font-weight-medium); margin-block-end: var(--ds-space-2);">Select your interests</legend>
+          <div class="showcase-stack">
+            <label class="ds-checkbox">
+              <input type="checkbox" class="ds-checkbox__control">
+              <span class="ds-checkbox__label">Design Systems</span>
+            </label>
+            <label class="ds-checkbox">
+              <input type="checkbox" class="ds-checkbox__control" checked>
+              <span class="ds-checkbox__label">Modern CSS</span>
+            </label>
+            <label class="ds-checkbox">
+              <input type="checkbox" class="ds-checkbox__control">
+              <span class="ds-checkbox__label">Web Accessibility</span>
+            </label>
+            <label class="ds-checkbox">
+              <input type="checkbox" class="ds-checkbox__control" disabled>
+              <span class="ds-checkbox__label">Disabled Option</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Radio Buttons</h3>
+        <fieldset style="border: none; padding: 0; margin: 0;">
+          <legend style="font-weight: var(--ds-font-weight-medium); margin-block-end: var(--ds-space-2);">Choose a plan</legend>
+          <div class="showcase-stack">
+            <label class="ds-radio">
+              <input type="radio" name="plan" class="ds-radio__control">
+              <span class="ds-radio__label">Free Plan</span>
+            </label>
+            <label class="ds-radio">
+              <input type="radio" name="plan" class="ds-radio__control" checked>
+              <span class="ds-radio__label">Pro Plan</span>
+            </label>
+            <label class="ds-radio">
+              <input type="radio" name="plan" class="ds-radio__control">
+              <span class="ds-radio__label">Enterprise Plan</span>
+            </label>
+            <label class="ds-radio">
+              <input type="radio" name="plan" class="ds-radio__control" disabled>
+              <span class="ds-radio__label">Custom Plan (Coming Soon)</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <!-- Switches Section -->
+    <section id="switches" class="showcase-section">
+      <h2 class="showcase-section-title">Toggle Switches</h2>
+      <p class="showcase-section-description">
+        Custom toggle switches with smooth animations and clear on/off states.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Switch States</h3>
+        <div class="showcase-stack">
+          <label class="ds-switch">
+            <input type="checkbox" class="ds-switch__control">
+            <span class="ds-switch__label">Enable notifications</span>
+          </label>
+          <label class="ds-switch">
+            <input type="checkbox" class="ds-switch__control" checked>
+            <span class="ds-switch__label">Enable dark mode</span>
+          </label>
+          <label class="ds-switch">
+            <input type="checkbox" class="ds-switch__control" disabled>
+            <span class="ds-switch__label">Enable experimental features (disabled)</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges Section -->
+    <section id="badges" class="showcase-section">
+      <h2 class="showcase-section-title">Badges</h2>
+      <p class="showcase-section-description">
+        Small status indicators with semantic color variants for different contexts.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Variants</h3>
+        <div class="showcase-inline">
+          <span class="ds-badge">Default</span>
+          <span class="ds-badge ds-badge--info">Info</span>
+          <span class="ds-badge ds-badge--success">Success</span>
+          <span class="ds-badge ds-badge--warn">Warning</span>
+          <span class="ds-badge ds-badge--danger">Danger</span>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">In Context</h3>
+        <div class="showcase-stack">
+          <div style="display: flex; gap: var(--ds-space-2); align-items: center;">
+            <span>Status:</span>
+            <span class="ds-badge ds-badge--success">Active</span>
+          </div>
+          <div style="display: flex; gap: var(--ds-space-2); align-items: center;">
+            <span>Priority:</span>
+            <span class="ds-badge ds-badge--danger">High</span>
+          </div>
+          <div style="display: flex; gap: var(--ds-space-2); align-items: center;">
+            <span>Version:</span>
+            <span class="ds-badge ds-badge--info">v2.1.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section id="alerts" class="showcase-section">
+      <h2 class="showcase-section-title">Alerts</h2>
+      <p class="showcase-section-description">
+        Contextual feedback messages for user actions with semantic color variants.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Variants</h3>
+        <div class="showcase-stack">
+          <div class="ds-alert ds-alert--info">
+            <strong>Information:</strong> This is an informational message about system status.
+          </div>
+          <div class="ds-alert ds-alert--success">
+            <strong>Success!</strong> Your changes have been saved successfully.
+          </div>
+          <div class="ds-alert ds-alert--warn">
+            <strong>Warning:</strong> This action may have unintended consequences.
+          </div>
+          <div class="ds-alert ds-alert--danger">
+            <strong>Error:</strong> Something went wrong. Please try again.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section id="cards" class="showcase-section">
+      <h2 class="showcase-section-title">Cards</h2>
+      <p class="showcase-section-description">
+        Container components with responsive layouts and container queries.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Basic Card</h3>
+        <div class="ds-card">
+          <h3 style="font-size: var(--ds-font-size-2); font-weight: var(--ds-font-weight-semibold); margin-block-end: var(--ds-space-2);">
+            Card Title
+          </h3>
+          <p style="color: var(--ds-color-text-muted); margin-block-end: var(--ds-space-4);">
+            This is a basic card component with a title and some descriptive text.
+            Cards automatically adjust their layout based on container width.
+          </p>
+          <div class="showcase-inline">
+            <button class="ds-button ds-button--primary ds-button--sm">Action</button>
+            <button class="ds-button ds-button--ghost ds-button--sm">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Card with Metadata</h3>
+        <div class="ds-card">
+          <div>
+            <h3 style="font-size: var(--ds-font-size-2); font-weight: var(--ds-font-weight-semibold); margin-block-end: var(--ds-space-1);">
+              Project Name
+            </h3>
+            <p style="font-size: var(--ds-font-size-0); color: var(--ds-color-text-muted);">
+              Updated 2 hours ago
+            </p>
+          </div>
+          <span class="ds-badge ds-badge--success">Active</span>
+          <p style="grid-column: 1 / -1; margin-block-start: var(--ds-space-2);">
+            A longer description that spans the full width of the card and provides
+            more context about this project.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popovers Section -->
+    <section id="popovers" class="showcase-section">
+      <h2 class="showcase-section-title">Popovers, Tooltips & Menus</h2>
+      <p class="showcase-section-description">
+        Floating UI components using the Popover API and CSS Anchor Positioning.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Tooltip</h3>
+        <p style="margin-block-end: var(--ds-space-4);">
+          Hover or focus the button below to see the tooltip:
+        </p>
+        <button 
+          class="ds-button ds-button--primary ds-tooltip-anchor" 
+          popovertarget="demo-tooltip"
+          style="--ds-anchor: --tooltip-demo;">
+          Hover Me
+        </button>
+        <div id="demo-tooltip" popover class="ds-tooltip ds-tooltip--bottom">
+          This is a helpful tooltip message
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Popover</h3>
+        <p style="margin-block-end: var(--ds-space-4);">
+          Click the button to open a popover with more content:
+        </p>
+        <button 
+          class="ds-button ds-button--secondary ds-popover-anchor" 
+          popovertarget="demo-popover">
+          Open Popover
+        </button>
+        <div id="demo-popover" popover class="ds-popover ds-popover--bottom">
+          <h4 style="font-size: var(--ds-font-size-1); font-weight: var(--ds-font-weight-semibold); margin-block-end: var(--ds-space-2);">
+            Popover Title
+          </h4>
+          <p style="margin-block-end: var(--ds-space-3);">
+            This is a popover with more detailed content. Popovers can contain
+            rich content, images, forms, or any other HTML elements.
+          </p>
+          <button class="ds-button ds-button--sm ds-button--primary" popovertarget="demo-popover">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Menu</h3>
+        <p style="margin-block-end: var(--ds-space-4);">
+          Click to open a menu with multiple options:
+        </p>
+        <button 
+          class="ds-button ds-menu-anchor" 
+          popovertarget="demo-menu">
+          Open Menu
+        </button>
+        <div id="demo-menu" popover class="ds-menu ds-menu--bottom">
+          <button class="ds-menu__item">
+            <span>Profile Settings</span>
+          </button>
+          <button class="ds-menu__item">
+            <span>Account</span>
+          </button>
+          <div class="ds-menu__separator"></div>
+          <button class="ds-menu__item">
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Positioning Variants</h3>
+        <p style="margin-block-end: var(--ds-space-4);">
+          Popovers can be positioned in different directions:
+        </p>
+        <div class="showcase-inline">
+          <button class="ds-button ds-tooltip-anchor" popovertarget="tooltip-top">
+            Top
+          </button>
+          <div id="tooltip-top" popover class="ds-tooltip ds-tooltip--top">Top tooltip</div>
+
+          <button class="ds-button ds-tooltip-anchor" popovertarget="tooltip-bottom">
+            Bottom
+          </button>
+          <div id="tooltip-bottom" popover class="ds-tooltip ds-tooltip--bottom">Bottom tooltip</div>
+
+          <button class="ds-button ds-tooltip-anchor" popovertarget="tooltip-start">
+            Start
+          </button>
+          <div id="tooltip-start" popover class="ds-tooltip ds-tooltip--start">Start tooltip</div>
+
+          <button class="ds-button ds-tooltip-anchor" popovertarget="tooltip-end">
+            End
+          </button>
+          <div id="tooltip-end" popover class="ds-tooltip ds-tooltip--end">End tooltip</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Utilities Section -->
+    <section id="utilities" class="showcase-section">
+      <h2 class="showcase-section-title">Utility Classes</h2>
+      <p class="showcase-section-description">
+        Helper classes for common layout patterns and visual effects.
+      </p>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Flow Layout</h3>
+        <div class="ds-u-flow">
+          <p>This is the first paragraph in a flow layout.</p>
+          <p>Spacing between elements is automatically managed.</p>
+          <p>The flow utility adds consistent vertical rhythm.</p>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Cluster Layout</h3>
+        <div class="ds-u-cluster">
+          <button class="ds-button ds-button--sm">Option 1</button>
+          <button class="ds-button ds-button--sm">Option 2</button>
+          <button class="ds-button ds-button--sm">Option 3</button>
+          <button class="ds-button ds-button--sm">Option 4</button>
+          <button class="ds-button ds-button--sm">Option 5</button>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Surface</h3>
+        <div class="ds-u-surface" style="padding: var(--ds-space-4);">
+          <p>This content is on an elevated surface with shadow and border.</p>
+        </div>
+      </div>
+
+      <div class="showcase-subsection">
+        <h3 class="showcase-subsection-title">Visually Hidden</h3>
+        <p>
+          This text is visible: 
+          <span class="ds-u-visually-hidden">This text is visually hidden but available to screen readers.</span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <label class="ds-switch">
+      <input type="checkbox" class="ds-switch__control" id="theme-toggle-control">
+      <span class="ds-switch__label">Dark Mode</span>
+    </label>
+  </div>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle-control');
+    const root = document.documentElement;
+    
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      root.setAttribute('data-theme', 'dark');
+      themeToggle.checked = true;
+    }
+    
+    themeToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>
